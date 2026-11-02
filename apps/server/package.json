@@ -1,0 +1,14 @@
+{
+  "name": "@mis-cuentas/server",
+  "version": "0.1.0",
+  "private": true,
+  "description": "API y persistencia (fuente única de verdad).",
+  "type": "module",
+  "dependencies": {
+    "@fastify/cookie": "^11.1.5",
+    "@mis-cuentas/core": "*",
+    "fastify": "^5.12.7",
+    "tsx": "^4.23.15",
+    "zod": "^4.6.7"
+  }
+}

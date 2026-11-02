@@ -1,0 +1,552 @@
+:root {
+  --bg-app: #f1f5f9;
+  --bg-card: #ffffff;
+  --bg-sidebar: #0f172a;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --income: #15803d;
+  --income-bg: #dcfce7;
+  --expense: #b91c1c;
+  --expense-bg: #fee2e2;
+  --transfer: #0369a1;
+  --transfer-bg: #e0f2fe;
+  --warn: #b45309;
+  --warn-bg: #fef3c7;
+  --radius-lg: 14px;
+  --radius-md: 10px;
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+  --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.16);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-app);
+  color: var(--text-primary);
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+/* ==========================================================================
+   EXPERIENCIA MÓVIL PROPIA (Mobile-First, < 1024px)
+   ========================================================================== */
+.app-shell {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 84px; /* Espacio para barra inferior móvil */
+}
+
+.pc-sidebar {
+  display: none;
+}
+
+.mobile-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--bg-sidebar);
+  color: #ffffff;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.mobile-topbar h1 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.mobile-topbar .periodo-selector {
+  background: #1e293b;
+  color: #ffffff;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 0.9rem;
+}
+
+.main-area {
+  flex: 1;
+  padding: 14px;
+  max-width: 1600px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.pc-header {
+  display: none;
+}
+
+/* En celular el dashboard se organiza en pilas táctiles rápidas, no en 3 columnas estrechas */
+.dashboard-grid-3col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* En celular los gráficos de Analítica Avanzada se apilan verticalmente sin saturar la pantalla */
+.analitica-grid-2col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Barra de navegación inferior exclusiva para celular */
+.mobile-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 68px;
+  background: #ffffff;
+  border-top: 1px solid var(--border-color);
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  align-items: center;
+  z-index: 30;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.mobile-nav-btn {
+  appearance: none;
+  background: none;
+  border: none;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 48px;
+}
+
+.mobile-nav-btn.activo {
+  color: var(--accent);
+}
+
+/* Botón flotante (+) para registro rápido en menos de 5 segundos */
+.fab-registrar {
+  position: fixed;
+  right: 18px;
+  bottom: 82px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #ffffff;
+  border: none;
+  box-shadow: var(--shadow-lg);
+  font-size: 1.9rem;
+  font-weight: 700;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 35;
+}
+
+.fab-registrar:hover {
+  background: var(--accent-hover);
+}
+
+/* ==========================================================================
+   EXPERIENCIA PC (>= 1024px): Sidebar fija + Dashboard en cuadrícula de 3 columnas
+   ========================================================================== */
+@media (min-width: 1024px) {
+  .app-shell {
+    flex-direction: row;
+    padding-bottom: 0;
+  }
+
+  .mobile-topbar,
+  .mobile-bottom-nav {
+    display: none;
+  }
+
+  .pc-sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 260px;
+    min-width: 260px;
+    height: 100dvh;
+    position: sticky;
+    top: 0;
+    background: var(--bg-sidebar);
+    color: #f8fafc;
+    padding: 22px 16px;
+    gap: 18px;
+  }
+
+  .pc-sidebar.colapsada {
+    width: 78px;
+    min-width: 78px;
+  }
+
+  .pc-sidebar-brand {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .pc-sidebar-brand h1 {
+    font-size: 1.15rem;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .pc-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+  }
+
+  .pc-nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 11px 13px;
+    border-radius: var(--radius-md);
+    border: none;
+    background: transparent;
+    color: #cbd5e1;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .pc-nav-btn:hover {
+    background: #1e293b;
+    color: #ffffff;
+  }
+
+  .pc-nav-btn.activo {
+    background: var(--accent);
+    color: #ffffff;
+  }
+
+  .main-area {
+    padding: 24px 28px;
+    overflow-y: auto;
+  }
+
+  .pc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 16px;
+  }
+
+  .pc-header h2 {
+    margin: 0;
+    font-size: 1.45rem;
+  }
+
+  /* Cuadrícula estricta de 3 columnas en el Dashboard de PC */
+  .dashboard-grid-3col {
+    display: grid;
+    grid-template-columns: minmax(300px, 1fr) minmax(420px, 1.45fr) minmax(300px, 1fr);
+    gap: 20px;
+    align-items: start;
+  }
+
+  /* Cuadrícula amplia de 2 columnas para Analítica Avanzada en PC */
+  .analitica-grid-2col {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    align-items: start;
+  }
+
+  .fab-registrar {
+    bottom: 28px;
+    right: 28px;
+  }
+}
+
+/* ==========================================================================
+   COMPONENTES COMUNES Y ÁREAS TÁCTILES
+   ========================================================================== */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.card-title {
+  margin: 0 0 12px 0;
+  font-size: 1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.kpi-box {
+  padding: 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background: #f8fafc;
+}
+
+.kpi-label {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.kpi-value {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-top: 4px;
+}
+
+.kpi-value.ingreso {
+  color: var(--income);
+}
+
+.kpi-value.egreso {
+  color: var(--expense);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 0.73rem;
+  font-weight: 700;
+}
+
+.badge-origen {
+  background: #e2e8f0;
+  color: #1e293b;
+}
+
+.badge-ingreso {
+  background: var(--income-bg);
+  color: var(--income);
+}
+
+.badge-gasto {
+  background: var(--expense-bg);
+  color: var(--expense);
+}
+
+.badge-transferencia {
+  background: var(--transfer-bg);
+  color: var(--transfer);
+}
+
+.badge-tag {
+  background: #ede9fe;
+  color: #5b21b6;
+  margin-right: 4px;
+}
+
+.aviso-insuficiente {
+  background: var(--warn-bg);
+  color: var(--warn);
+  border: 1px solid #fde68a;
+  border-radius: var(--radius-md);
+  padding: 12px;
+  font-size: 0.86rem;
+  line-height: 1.4;
+}
+
+.estado-vacio {
+  text-align: center;
+  padding: 24px 16px;
+  border: 1px dashed #cbd5e1;
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+}
+
+/* Botones y selectores de un toque (áreas táctiles >= 44px) */
+.btn {
+  min-height: 44px;
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background: #ffffff;
+  color: var(--text-primary);
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.btn-primario {
+  background: var(--accent);
+  color: #ffffff;
+  border-color: var(--accent);
+}
+
+.btn-primario:hover {
+  background: var(--accent-hover);
+}
+
+.btn-peligro {
+  color: var(--expense);
+  border-color: #fecaca;
+  background: #fff5f5;
+}
+
+.chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip-btn {
+  min-height: 42px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  background: #f8fafc;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.86rem;
+  cursor: pointer;
+}
+
+.chip-btn.seleccionado {
+  background: var(--accent);
+  color: #ffffff;
+  border-color: var(--accent);
+}
+
+.campo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 12px;
+}
+
+.campo-form label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.input-control {
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  background: #ffffff;
+}
+
+.input-monto-rapido {
+  font-size: 1.55rem;
+  font-weight: 800;
+  text-align: right;
+  padding: 10px 14px;
+}
+
+/* Modal / Hoja inferior móvil para registro ultrarrápido */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  z-index: 50;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.modal-sheet {
+  background: #ffffff;
+  width: 100%;
+  max-width: 560px;
+  max-height: 92dvh;
+  overflow-y: auto;
+  border-radius: 20px 20px 0 0;
+  padding: 18px;
+  box-shadow: var(--shadow-lg);
+}
+
+@media (min-width: 768px) {
+  .modal-backdrop {
+    align-items: center;
+    padding: 16px;
+  }
+
+  .modal-sheet {
+    border-radius: 16px;
+  }
+}
+
+.lista-movimientos {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.item-movimiento {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: #ffffff;
+}
+
+.barra-progreso {
+  height: 8px;
+  border-radius: 999px;
+  background: #e2e8f0;
+  overflow: hidden;
+  margin-top: 6px;
+}
+
+.barra-progreso-fill {
+  height: 100%;
+  background: var(--accent);
+}
+
+.barra-progreso-fill.excedido {
+  background: var(--expense);
+}

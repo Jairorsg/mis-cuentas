@@ -1,0 +1,10 @@
+{
+  "name": "@mis-cuentas/core",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Dominio compartido: dinero exacto, monedas, fechas America/Lima, origen de datos.",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  }
+}

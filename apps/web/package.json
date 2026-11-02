@@ -1,0 +1,15 @@
+{
+  "name": "@mis-cuentas/web",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Aplicación web y móvil (React + Vite + IndexedDB con interfaz desacoplada para Supabase).",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 5173",
+    "build": "vite build",
+    "preview": "vite preview --port 4173"
+  },
+  "dependencies": {
+    "@mis-cuentas/core": "*"
+  }
+}

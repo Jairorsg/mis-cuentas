@@ -1,0 +1,89 @@
+{
+  "id": "/",
+  "name": "Mis Cuentas — Gestión Financiera Personal Permanente (PEN)",
+  "short_name": "Mis Cuentas",
+  "description": "Sistema financiero personal permanente para PC, Android y iPhone. Fuente única de verdad en Soles (PEN), presupuestos, eventos universales, analítica avanzada, riesgo Monte Carlo y sincronización offline-first.",
+  "lang": "es-PE",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "any",
+  "background_color": "#f1f5f9",
+  "theme_color": "#0f172a",
+  "categories": ["finance", "productivity"],
+  "icons": [
+    {
+      "src": "/icono-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icono-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icono-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icono-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icono-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Registrar movimiento",
+      "short_name": "Nuevo mov.",
+      "description": "Registrar un ingreso, gasto o transferencia en menos de 5 segundos",
+      "url": "/?accion=nuevo",
+      "icons": [
+        {
+          "src": "/icono-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Eventos y Viajes",
+      "short_name": "Eventos",
+      "description": "Abrir presupuestos y control de eventos o viajes",
+      "url": "/eventos",
+      "icons": [
+        {
+          "src": "/icono-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Sincronización Cloud",
+      "short_name": "Sync Cloud",
+      "description": "Ver estado offline/online y sincronizar con Supabase Cloud",
+      "url": "/sincronizacion",
+      "icons": [
+        {
+          "src": "/icono-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+node_modules/
+dist/
+apps/web/dist/
+coverage/
+
+# ---- DATOS FINANCIEROS REALES Y RESPALDOS: nunca versionar ----
+data/
+data-dev/
+backups/
+*.db
+*.db-wal
+*.db-shm
+*.db-journal
+exportaciones/
+*.enc.json
+
+# ---- VARIABLES DE ENTORNO CON CREDENCIALES REALES ----
+.env
+.env.*
+!.env.example
+*.log

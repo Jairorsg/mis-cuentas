@@ -1,0 +1,47 @@
+{
+  "name": "mis-cuentas",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Sistema de gestión financiera personal permanente (PEN, America/Lima).",
+  "type": "module",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run build:web",
+    "start": "tsx apps/server/src/servidor.ts --entorno=production",
+    "dev": "vite --config apps/web/vite.config.ts --port 5173",
+    "dev:server": "tsx watch apps/server/src/servidor.ts --entorno=development",
+    "build:web": "vite build --config apps/web/vite.config.ts",
+    "inicializar": "tsx apps/server/src/cli/main.ts inicializar",
+    "crear-usuario": "tsx apps/server/src/cli/main.ts crear-usuario",
+    "backup": "tsx apps/server/src/cli/main.ts backup",
+    "listar-backups": "tsx apps/server/src/cli/main.ts listar-backups",
+    "restaurar": "tsx apps/server/src/cli/main.ts restaurar",
+    "verificar": "tsx apps/server/src/cli/main.ts verificar",
+    "exportar": "tsx apps/server/src/cli/main.ts exportar",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check": "npm run typecheck && npm run test"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "fake-indexeddb": "^6.2.7",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5",
+    "vitest": "^5.0.5"
+  },
+  "dependencies": {
+    "echarts": "^6.1.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  }
+}
