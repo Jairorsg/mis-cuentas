@@ -117,7 +117,10 @@ export function validarClavePublicaSupabaseEnCliente(
   if (!urlSupabase || !urlSupabase.trim()) {
     return { valida: false, motivoRechazo: 'URL de Supabase no configurada.' };
   }
-  const urlLimpia = urlSupabase.trim();
+  const urlLimpia = urlSupabase
+    .trim()
+    .replace(/\/+$/, '')
+    .replace(/\/(rest|auth)\/v1$/i, '');
   const chequeoLocal = esEndpointLocalOIpPrivadaProhibida(urlLimpia);
   if (chequeoLocal.prohibido) {
     return {

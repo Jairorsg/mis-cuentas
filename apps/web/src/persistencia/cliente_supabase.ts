@@ -103,7 +103,10 @@ export class ClienteSupabasePrivado implements TransporteNubeRls {
       return;
     }
 
-    this.urlBase = url!.trim().replace(/\/+$/, '');
+    this.urlBase = url!
+      .trim()
+      .replace(/\/+$/, '')
+      .replace(/\/(rest|auth)\/v1$/i, '');
     this.publishableKey = key!.trim();
     this.emailPropietarioAutorizado = emailAut ? emailAut.trim().toLowerCase() : null;
     this.errorConfiguracion = null;
